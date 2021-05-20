@@ -62,5 +62,5 @@ bash run_assignment-2-christoffer.sh --keyword single --window_size 7 --output s
 ```  
 _Without bash scrip_  
 ```console
-python assignment-2-christoffer.sh --keyword single --window_size 7 --output single_collocates.csv
+python assignment-2-christoffer.py --keyword single --window_size 7 --output single_collocates.csv
 ```  
