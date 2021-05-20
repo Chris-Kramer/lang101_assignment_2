@@ -2,23 +2,34 @@
 
 VENVNAME=as2-cmk #Environment name
 
-# Create and activate environment
 echo "Creating environment"
-python3 -m venv $VENVNAME
+python -m venv $VENVNAME
 
-echo "Activating environment"
-source $VENVNAME/bin/activate
+# This makes sure that the bash script can be run from bash emulator on windows 
+# Test if the folder bin in venvname exists
+if [ -d "$VENVNAME/bin" ]
+
+    then
+        source $VENVNAME/bin/activate
+        echo "Building venv for Linux/Mac ..."
+    
+    else
+        source $VENVNAME/Scripts/activate
+        echo "Building venv for Windows ..."
+fi
+
 
 # Upgrade pip
 echo "Upgrading pip"
-pip install --upgrade pip
+# I'm specifying that I'm using pip from python, since my pc have problems upgrading pip locally if I don't do it.
+python -m pip install --upgrade pip
 
 # Move to src folder
 cd src
 
 # Run script
 echo "running script"
-python3 assignment-2-christoffer.py $@
+python assignment-2-christoffer.py $@
 
 # Deavtivate environment
 echo "deactivating and removing environment"
